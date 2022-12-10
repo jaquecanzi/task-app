@@ -1,7 +1,7 @@
 const express = require("express")
 const Task = require("../modelS/taskModel")
 const router = express.Router()
-const {createTask, readTask} = require('../controller/taskController')
+const {createTask, readTasks, readTask, deleteTask} = require('../controller/taskController')
 
 
 
@@ -10,8 +10,15 @@ const {createTask, readTask} = require('../controller/taskController')
 router.post("/api/tasks", createTask)
 
 
+/*---  READ A TASKS  ---*/
+
+router.get("/api/tasks", readTasks)
+
 /*---  READ A TASK  ---*/
 
-router.get("/api/tasks", readTask)
+router.get("/api/tasks/:id", readTask)
+
+/* DELETE TASK */
+router.delete("/api/tasks/:id", deleteTask)
 
 module.exports = router
