@@ -1,5 +1,6 @@
 /*  */
 
+const { json } = require('express/lib/response')
 const Task = require('../modelS/taskModel')
 
 /* CREATE TASK */
@@ -55,9 +56,29 @@ const deleteTask = async (req,res) => {
     }
 }
 
+/* UPDATE A TASK */
+
+const updateTask = async (req,res) => {
+    try {
+        const {id} = req.params
+        const task = await Task.findByIdAndUpdate(
+            {_id: id},
+            req.body,
+            {new: true,
+            runValidators: true})
+        if(!task) {
+            return res.status(400).json('No task with id: ' + id)
+        }
+        res.status(200).json(task)
+    } catch (error) {
+        res.status(500).json({error: message})
+    }
+}
+
 module.exports = {
     createTask,
     readTasks,
     readTask,
-    deleteTask
+    deleteTask,
+    updateTask
 }

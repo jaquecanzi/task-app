@@ -1,7 +1,7 @@
 const express = require("express")
 const Task = require("../modelS/taskModel")
 const router = express.Router()
-const {createTask, readTasks, readTask, deleteTask} = require('../controller/taskController')
+const {createTask, readTasks, readTask, deleteTask, updateTask} = require('../controller/taskController')
 
 
 
@@ -21,4 +21,6 @@ router.get("/api/tasks/:id", readTask)
 /* DELETE TASK */
 router.delete("/api/tasks/:id", deleteTask)
 
+/* UPDATE TASK */
+router.put("/api/tasks/:id", updateTask)
 module.exports = router
