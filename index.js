@@ -10,7 +10,7 @@ const taskRoutes = require('./backend/routes/taskRoute')
 /*---  MIDDLEWARE  ---*/
 app.use(express.json())
 app.use(express.urlencoded({extended: false}))
-app.use(taskRoutes)
+app.use("/api/tasks" ,taskRoutes)
 
 mongoose
 .connect(process.env.MONGO_URI)

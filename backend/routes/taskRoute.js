@@ -7,20 +7,20 @@ const {createTask, readTasks, readTask, deleteTask, updateTask} = require('../co
 
 /*---  CREAT A TASK  ---*/
 
-router.post("/api/tasks", createTask)
+router.post("/", createTask)
 
 
 /*---  READ A TASKS  ---*/
 
-router.get("/api/tasks", readTasks)
+router.get("/", readTasks)
 
 /*---  READ A TASK  ---*/
 
-router.get("/api/tasks/:id", readTask)
+router.get("/:id", readTask)
 
 /* DELETE TASK */
-router.delete("/api/tasks/:id", deleteTask)
+router.delete("/:id", deleteTask)
 
 /* UPDATE TASK */
-router.put("/api/tasks/:id", updateTask)
+router.patch("/:id", updateTask)
 module.exports = router
